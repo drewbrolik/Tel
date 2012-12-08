@@ -38,10 +38,6 @@ along with Tel.  If not, see <http://www.gnu.org/licenses/>.
 			}
 		}
 		
-		//if (typeof(additionalOptions == "function")) { //- if additionalOptions is just the amount number, convert it to an object
-		//	additionlOptions = { callback:additionalOptions }
-		//}
-		
 		options = $.extend(options, additionalOptions ); //- override default options with user-supplied options
 		
 		var isMobile = { // from http://www.abeautifulsite.net/blog/2011/11/detecting-mobile-devices-with-javascript/
@@ -65,7 +61,11 @@ along with Tel.  If not, see <http://www.gnu.org/licenses/>.
 			}
 		};
 		
-		$(this).find("a").each(function() { //- do it for 'em all
+		var $This = $(this);
+		
+		if (!$This.is("a")) { $This = $This.find("a"); }
+		
+		$This.each(function() { //- do it for 'em all
 			
 			var $this = $(this);
 			
